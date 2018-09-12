@@ -25,12 +25,6 @@ Partial Class frmMain
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
-        Me.dgv_Results = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.comboBox_DriftGas = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lbl_Beta = New System.Windows.Forms.Label()
@@ -40,8 +34,15 @@ Partial Class frmMain
         Me.btn_ChooseCalFile = New System.Windows.Forms.Button()
         Me.txtBox_CalFilePath = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.dgv_Results = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lbl_Developer = New System.Windows.Forms.LinkLabel()
         Me.lbl_Atribution = New System.Windows.Forms.LinkLabel()
+        Me.lbl_Github = New System.Windows.Forms.LinkLabel()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -57,7 +58,6 @@ Partial Class frmMain
         '
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2
-        Me.SplitContainer1.IsSplitterFixed = True
         Me.SplitContainer1.Location = New System.Drawing.Point(0, 0)
         Me.SplitContainer1.Name = "SplitContainer1"
         Me.SplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal
@@ -68,10 +68,11 @@ Partial Class frmMain
         '
         'SplitContainer1.Panel2
         '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.lbl_Github)
         Me.SplitContainer1.Panel2.Controls.Add(Me.lbl_Developer)
         Me.SplitContainer1.Panel2.Controls.Add(Me.lbl_Atribution)
-        Me.SplitContainer1.Size = New System.Drawing.Size(847, 569)
-        Me.SplitContainer1.SplitterDistance = 527
+        Me.SplitContainer1.Size = New System.Drawing.Size(847, 589)
+        Me.SplitContainer1.SplitterDistance = 529
         Me.SplitContainer1.TabIndex = 0
         '
         'SplitContainer2
@@ -97,58 +98,9 @@ Partial Class frmMain
         'SplitContainer2.Panel2
         '
         Me.SplitContainer2.Panel2.Controls.Add(Me.dgv_Results)
-        Me.SplitContainer2.Size = New System.Drawing.Size(847, 527)
+        Me.SplitContainer2.Size = New System.Drawing.Size(847, 529)
         Me.SplitContainer2.SplitterDistance = 65
         Me.SplitContainer2.TabIndex = 0
-        '
-        'dgv_Results
-        '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv_Results.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgv_Results.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Results.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
-        Me.dgv_Results.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgv_Results.Location = New System.Drawing.Point(0, 0)
-        Me.dgv_Results.Name = "dgv_Results"
-        Me.dgv_Results.ReadOnly = True
-        Me.dgv_Results.Size = New System.Drawing.Size(847, 458)
-        Me.dgv_Results.TabIndex = 1
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "tD (Drift Time)"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "m/z"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "z"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Ionic Mass"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "CCS (A^2)"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
         '
         'comboBox_DriftGas
         '
@@ -230,12 +182,61 @@ Partial Class frmMain
         Me.Label1.TabIndex = 9
         Me.Label1.Text = "IMS Calibration File:"
         '
+        'dgv_Results
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv_Results.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgv_Results.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv_Results.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
+        Me.dgv_Results.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgv_Results.Location = New System.Drawing.Point(0, 0)
+        Me.dgv_Results.Name = "dgv_Results"
+        Me.dgv_Results.ReadOnly = True
+        Me.dgv_Results.Size = New System.Drawing.Size(847, 460)
+        Me.dgv_Results.TabIndex = 1
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "tD (Drift Time)"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "m/z"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "z"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Ionic Mass"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "CCS (A^2)"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
         'lbl_Developer
         '
-        Me.lbl_Developer.Location = New System.Drawing.Point(388, 12)
+        Me.lbl_Developer.Location = New System.Drawing.Point(430, 12)
         Me.lbl_Developer.Name = "lbl_Developer"
         Me.lbl_Developer.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lbl_Developer.Size = New System.Drawing.Size(447, 13)
+        Me.lbl_Developer.Size = New System.Drawing.Size(405, 13)
         Me.lbl_Developer.TabIndex = 35
         Me.lbl_Developer.TabStop = True
         Me.lbl_Developer.Text = "Developer Placeholder"
@@ -251,13 +252,24 @@ Partial Class frmMain
         Me.lbl_Atribution.TabStop = True
         Me.lbl_Atribution.Text = "Attribution Placeholder"
         '
-        'Form1
+        'lbl_Github
+        '
+        Me.lbl_Github.Location = New System.Drawing.Point(428, 34)
+        Me.lbl_Github.Name = "lbl_Github"
+        Me.lbl_Github.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lbl_Github.Size = New System.Drawing.Size(405, 13)
+        Me.lbl_Github.TabIndex = 36
+        Me.lbl_Github.TabStop = True
+        Me.lbl_Github.Text = "Fork Github Placeholder"
+        Me.lbl_Github.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(847, 569)
+        Me.ClientSize = New System.Drawing.Size(847, 589)
         Me.Controls.Add(Me.SplitContainer1)
-        Me.Name = "Form1"
+        Me.Name = "frmMain"
         Me.Text = "Single Field CCS Calculator"
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
@@ -293,4 +305,5 @@ Partial Class frmMain
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents lbl_Developer As LinkLabel
     Friend WithEvents lbl_Atribution As LinkLabel
+    Friend WithEvents lbl_Github As LinkLabel
 End Class
