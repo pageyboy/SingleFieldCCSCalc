@@ -40,9 +40,10 @@ Partial Class frmMain
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lbl_Github = New System.Windows.Forms.LinkLabel()
         Me.lbl_Developer = New System.Windows.Forms.LinkLabel()
         Me.lbl_Atribution = New System.Windows.Forms.LinkLabel()
-        Me.lbl_Github = New System.Windows.Forms.LinkLabel()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -231,6 +232,17 @@ Partial Class frmMain
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
         '
+        'lbl_Github
+        '
+        Me.lbl_Github.Location = New System.Drawing.Point(428, 34)
+        Me.lbl_Github.Name = "lbl_Github"
+        Me.lbl_Github.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lbl_Github.Size = New System.Drawing.Size(405, 13)
+        Me.lbl_Github.TabIndex = 36
+        Me.lbl_Github.TabStop = True
+        Me.lbl_Github.Text = "Fork Github Placeholder"
+        Me.lbl_Github.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'lbl_Developer
         '
         Me.lbl_Developer.Location = New System.Drawing.Point(430, 12)
@@ -251,17 +263,6 @@ Partial Class frmMain
         Me.lbl_Atribution.TabIndex = 34
         Me.lbl_Atribution.TabStop = True
         Me.lbl_Atribution.Text = "Attribution Placeholder"
-        '
-        'lbl_Github
-        '
-        Me.lbl_Github.Location = New System.Drawing.Point(428, 34)
-        Me.lbl_Github.Name = "lbl_Github"
-        Me.lbl_Github.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lbl_Github.Size = New System.Drawing.Size(405, 13)
-        Me.lbl_Github.TabIndex = 36
-        Me.lbl_Github.TabStop = True
-        Me.lbl_Github.Text = "Fork Github Placeholder"
-        Me.lbl_Github.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'frmMain
         '
@@ -306,4 +307,5 @@ Partial Class frmMain
     Friend WithEvents lbl_Developer As LinkLabel
     Friend WithEvents lbl_Atribution As LinkLabel
     Friend WithEvents lbl_Github As LinkLabel
+    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
 End Class
