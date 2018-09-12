@@ -35,15 +35,16 @@ Partial Class frmMain
         Me.txtBox_CalFilePath = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dgv_Results = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lbl_Github = New System.Windows.Forms.LinkLabel()
         Me.lbl_Developer = New System.Windows.Forms.LinkLabel()
         Me.lbl_Atribution = New System.Windows.Forms.LinkLabel()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Adduct = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -194,43 +195,13 @@ Partial Class frmMain
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgv_Results.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgv_Results.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Results.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
+        Me.dgv_Results.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Adduct, Me.Column3, Me.Column4, Me.Column5})
         Me.dgv_Results.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgv_Results.Location = New System.Drawing.Point(0, 0)
         Me.dgv_Results.Name = "dgv_Results"
         Me.dgv_Results.ReadOnly = True
         Me.dgv_Results.Size = New System.Drawing.Size(847, 460)
         Me.dgv_Results.TabIndex = 1
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "tD (Drift Time)"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "m/z"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "z"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Ionic Mass"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "CCS (A^2)"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
         '
         'lbl_Github
         '
@@ -263,6 +234,45 @@ Partial Class frmMain
         Me.lbl_Atribution.TabIndex = 34
         Me.lbl_Atribution.TabStop = True
         Me.lbl_Atribution.Text = "Attribution Placeholder"
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "tD (Drift Time)"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "m/z"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Adduct
+        '
+        Me.Adduct.HeaderText = "Adduct"
+        Me.Adduct.Items.AddRange(New Object() {"[M+H]+", "[M+Na]+", "[M+K]+", "[M+NH4]+", "", "[M-H]-"})
+        Me.Adduct.Name = "Adduct"
+        Me.Adduct.ReadOnly = True
+        Me.Adduct.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Adduct.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "z"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Ionic Mass"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "CCS (A^2)"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
         '
         'frmMain
         '
@@ -299,13 +309,14 @@ Partial Class frmMain
     Friend WithEvents txtBox_CalFilePath As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents dgv_Results As DataGridView
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents lbl_Developer As LinkLabel
     Friend WithEvents lbl_Atribution As LinkLabel
     Friend WithEvents lbl_Github As LinkLabel
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Adduct As DataGridViewComboBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
 End Class

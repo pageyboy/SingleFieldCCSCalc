@@ -7,6 +7,7 @@ Public Class frmMain
     Dim tFix As Double
     Dim beta As Double
     Dim gasType As String
+    Dim DEBUG_MODE As Boolean = True
 
     Public Structure CCS_Calculation
         Dim IonicMass As Single
@@ -25,6 +26,11 @@ Public Class frmMain
 
         lbl_Github.Text = "Find on Github"
         lbl_Github.Links.Add(0, 14, "https://github.com/pageyboy/SingleFieldCCSCalc")
+
+        If DEBUG_MODE = True Then
+            txtBox_CalFilePath.Text = "D:\Data\Single field_Sulfa_AIF.d\AcqData\OverrideImsCal.xml"
+            ReadIMSCal(txtBox_CalFilePath.Text)
+        End If
 
     End Sub
 
@@ -49,20 +55,24 @@ Public Class frmMain
 
         If FolderBrowserDialog1.ShowDialog() = DialogResult.OK Then
             Dim IMSCalFilePath As String = FolderBrowserDialog1.SelectedPath & "\AcqData\OverrideImsCal.xml"
-            If File.Exists(IMSCalFilePath) Then
-                Dim IMSCalFile = XDocument.Load(IMSCalFilePath)
-                tFix = IMSCalFile.Descendants("TFix").Value
-                beta = IMSCalFile.Descendants("Beta").Value
-                gasType = IMSCalFile.Descendants("DriftGas").Value
-                lbl_TFix.Text = tFix
-                lbl_Beta.Text = beta
-                txtBox_CalFilePath.Text = IMSCalFilePath
-                comboBox_DriftGas.SelectedText = gasType
-                Debug.Print("TFix: " & tFix & " Beta: " & beta & " Drift Gas Type: " & gasType)
-                dgv_Results.ReadOnly = False
-            Else
-                MessageBox.Show("Data file hasn't been calibrated", "No IMS cal file found", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
+            ReadIMSCal(IMSCalFilePath)
+        End If
+    End Sub
+
+    Sub ReadIMSCal(IMSCalPath As String)
+        If File.Exists(IMSCalPath) Then
+            Dim IMSCalFile = XDocument.Load(IMSCalPath)
+            tFix = IMSCalFile.Descendants("TFix").Value
+            beta = IMSCalFile.Descendants("Beta").Value
+            gasType = IMSCalFile.Descendants("DriftGas").Value
+            lbl_TFix.Text = tFix
+            lbl_Beta.Text = beta
+            txtBox_CalFilePath.Text = IMSCalPath
+            comboBox_DriftGas.SelectedText = gasType
+            Debug.Print("TFix: " & tFix & " Beta: " & beta & " Drift Gas Type: " & gasType)
+            dgv_Results.ReadOnly = False
+        Else
+            MessageBox.Show("Data file hasn't been calibrated", "No IMS cal file found", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
@@ -120,7 +130,7 @@ Public Class frmMain
     End Function
 
     Private Sub dgv_Results_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Results.CellValueChanged
-        If e.RowIndex > -1 And e.ColumnIndex < 3 Then
+        If e.RowIndex > -1 And e.ColumnIndex < 4 Then
             Dim readyToCalc As Boolean = True
             For i As Integer = 0 To 2
                 If IsDBNull(dgv_Results.Rows(e.RowIndex).Cells(i).Value) Or Not IsNumeric(dgv_Results.Rows(e.RowIndex).Cells(i).Value) Then
@@ -141,4 +151,9 @@ Public Class frmMain
 
     End Sub
 
+    Private Sub dgv_Results_Click(sender As Object, e As EventArgs) Handles dgv_Results.Click
+        If txtBox_CalFilePath.Text = "" Then
+            MessageBox.Show(Me, "Please select a calibration file first", "Calibration File Required", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
 End Class
