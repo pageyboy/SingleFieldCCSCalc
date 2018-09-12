@@ -1,6 +1,5 @@
 ﻿Imports System.IO
 Imports System.Xml
-Imports Microsoft.VisualBasic
 
 Public Class frmMain
 
@@ -131,22 +130,30 @@ Public Class frmMain
 
     Private Sub dgv_Results_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Results.CellValueChanged
         If e.RowIndex > -1 And e.ColumnIndex < 4 Then
-            Dim readyToCalc As Boolean = True
-            For i As Integer = 0 To 2
-                If IsDBNull(dgv_Results.Rows(e.RowIndex).Cells(i).Value) Or Not IsNumeric(dgv_Results.Rows(e.RowIndex).Cells(i).Value) Then
-                    readyToCalc = False
+            Try
+                Dim readyToCalc As Boolean = False
+                For i As Integer = 0 To 3 Step 1
+                    If String.IsNullOrEmpty(Convert.ToString(dgv_Results.Rows(e.RowIndex).Cells(i).Value)) Then
+                        readyToCalc = False
+                        Exit Sub
+                    Else
+                        readyToCalc = True
+                    End If
+                Next
+                If readyToCalc = True Then
+                    Debug.Print("Ready to calculate CCS")
+                    Dim DriftTime As Double = dgv_Results.Rows(e.RowIndex).Cells(0).Value
+                    Dim MassToCharge As Double = dgv_Results.Rows(e.RowIndex).Cells(1).Value
+                    Dim ChargeState As Integer = dgv_Results.Rows(e.RowIndex).Cells(2).Value
+                    Dim CCSResults As CCS_Calculation
+                    CCSResults = CalculateCCS(DriftTime, MassToCharge, ChargeState, gasType, tFix, beta)
+                    dgv_Results.Rows(e.RowIndex).Cells(3).Value = Format(CCSResults.IonicMass, "0.0000")
+                    dgv_Results.Rows(e.RowIndex).Cells(4).Value = Format(CCSResults.CCS, "0.0")
                 End If
-            Next
-            If readyToCalc = True Then
-                Debug.Print("Ready to calculate CCS")
-                Dim DriftTime As Double = dgv_Results.Rows(e.RowIndex).Cells(0).Value
-                Dim MassToCharge As Double = dgv_Results.Rows(e.RowIndex).Cells(1).Value
-                Dim ChargeState As Integer = dgv_Results.Rows(e.RowIndex).Cells(2).Value
-                Dim CCSResults As CCS_Calculation
-                CCSResults = CalculateCCS(DriftTime, MassToCharge, ChargeState, gasType, tFix, beta)
-                dgv_Results.Rows(e.RowIndex).Cells(3).Value = Format(CCSResults.IonicMass, "0.0000")
-                dgv_Results.Rows(e.RowIndex).Cells(4).Value = Format(CCSResults.CCS, "0.0")
-            End If
+            Catch ex As Exception
+                MessageBox.Show(Me, "Calculation failed", "Calculation failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
         End If
 
     End Sub
