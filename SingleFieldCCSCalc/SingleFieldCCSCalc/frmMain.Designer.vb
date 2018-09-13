@@ -23,6 +23,7 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
         Me.comboBox_DriftGas = New System.Windows.Forms.ComboBox()
@@ -41,10 +42,12 @@ Partial Class frmMain
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Adduct = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btn_Export = New System.Windows.Forms.Button()
+        Me.btn_Copy = New System.Windows.Forms.Button()
+        Me.btn_Clear = New System.Windows.Forms.Button()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -60,6 +63,7 @@ Partial Class frmMain
         '
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2
+        Me.SplitContainer1.IsSplitterFixed = True
         Me.SplitContainer1.Location = New System.Drawing.Point(0, 0)
         Me.SplitContainer1.Name = "SplitContainer1"
         Me.SplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal
@@ -70,6 +74,7 @@ Partial Class frmMain
         '
         'SplitContainer1.Panel2
         '
+        Me.SplitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control
         Me.SplitContainer1.Panel2.Controls.Add(Me.lbl_Github)
         Me.SplitContainer1.Panel2.Controls.Add(Me.lbl_Developer)
         Me.SplitContainer1.Panel2.Controls.Add(Me.lbl_Atribution)
@@ -81,12 +86,17 @@ Partial Class frmMain
         '
         Me.SplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1
+        Me.SplitContainer2.IsSplitterFixed = True
         Me.SplitContainer2.Location = New System.Drawing.Point(0, 0)
         Me.SplitContainer2.Name = "SplitContainer2"
         Me.SplitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
         'SplitContainer2.Panel1
         '
+        Me.SplitContainer2.Panel1.BackColor = System.Drawing.SystemColors.Control
+        Me.SplitContainer2.Panel1.Controls.Add(Me.btn_Clear)
+        Me.SplitContainer2.Panel1.Controls.Add(Me.btn_Copy)
+        Me.SplitContainer2.Panel1.Controls.Add(Me.btn_Export)
         Me.SplitContainer2.Panel1.Controls.Add(Me.comboBox_DriftGas)
         Me.SplitContainer2.Panel1.Controls.Add(Me.Label3)
         Me.SplitContainer2.Panel1.Controls.Add(Me.lbl_Beta)
@@ -101,7 +111,7 @@ Partial Class frmMain
         '
         Me.SplitContainer2.Panel2.Controls.Add(Me.dgv_Results)
         Me.SplitContainer2.Size = New System.Drawing.Size(847, 529)
-        Me.SplitContainer2.SplitterDistance = 65
+        Me.SplitContainer2.SplitterDistance = 97
         Me.SplitContainer2.TabIndex = 0
         '
         'comboBox_DriftGas
@@ -110,7 +120,7 @@ Partial Class frmMain
         Me.comboBox_DriftGas.Items.AddRange(New Object() {"N2", "Ar", "CO2", "CO", "He", "H2", "Ne", "NO2", "NO", "N2O", "O2", "SF6"})
         Me.comboBox_DriftGas.Location = New System.Drawing.Point(602, 34)
         Me.comboBox_DriftGas.Name = "comboBox_DriftGas"
-        Me.comboBox_DriftGas.Size = New System.Drawing.Size(121, 21)
+        Me.comboBox_DriftGas.Size = New System.Drawing.Size(150, 21)
         Me.comboBox_DriftGas.TabIndex = 17
         '
         'Label3
@@ -186,6 +196,7 @@ Partial Class frmMain
         '
         'dgv_Results
         '
+        Me.dgv_Results.BackgroundColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -195,17 +206,17 @@ Partial Class frmMain
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgv_Results.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgv_Results.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_Results.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Adduct, Me.Column3, Me.Column4, Me.Column5})
+        Me.dgv_Results.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
         Me.dgv_Results.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgv_Results.Location = New System.Drawing.Point(0, 0)
         Me.dgv_Results.Name = "dgv_Results"
         Me.dgv_Results.ReadOnly = True
-        Me.dgv_Results.Size = New System.Drawing.Size(847, 460)
+        Me.dgv_Results.Size = New System.Drawing.Size(847, 428)
         Me.dgv_Results.TabIndex = 1
         '
         'lbl_Github
         '
-        Me.lbl_Github.Location = New System.Drawing.Point(428, 34)
+        Me.lbl_Github.Location = New System.Drawing.Point(430, 32)
         Me.lbl_Github.Name = "lbl_Github"
         Me.lbl_Github.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lbl_Github.Size = New System.Drawing.Size(405, 13)
@@ -216,7 +227,7 @@ Partial Class frmMain
         '
         'lbl_Developer
         '
-        Me.lbl_Developer.Location = New System.Drawing.Point(430, 12)
+        Me.lbl_Developer.Location = New System.Drawing.Point(430, 10)
         Me.lbl_Developer.Name = "lbl_Developer"
         Me.lbl_Developer.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lbl_Developer.Size = New System.Drawing.Size(405, 13)
@@ -228,7 +239,7 @@ Partial Class frmMain
         'lbl_Atribution
         '
         Me.lbl_Atribution.AutoSize = True
-        Me.lbl_Atribution.Location = New System.Drawing.Point(10, 12)
+        Me.lbl_Atribution.Location = New System.Drawing.Point(10, 22)
         Me.lbl_Atribution.Name = "lbl_Atribution"
         Me.lbl_Atribution.Size = New System.Drawing.Size(113, 13)
         Me.lbl_Atribution.TabIndex = 34
@@ -246,15 +257,6 @@ Partial Class frmMain
         Me.Column2.HeaderText = "m/z"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
-        '
-        'Adduct
-        '
-        Me.Adduct.HeaderText = "Adduct"
-        Me.Adduct.Items.AddRange(New Object() {"[M+H]+", "[M+Na]+", "[M+K]+", "[M+NH4]+", "", "[M-H]-"})
-        Me.Adduct.Name = "Adduct"
-        Me.Adduct.ReadOnly = True
-        Me.Adduct.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Adduct.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
         'Column3
         '
@@ -274,12 +276,43 @@ Partial Class frmMain
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
         '
+        'btn_Export
+        '
+        Me.btn_Export.Location = New System.Drawing.Point(15, 64)
+        Me.btn_Export.Name = "btn_Export"
+        Me.btn_Export.Size = New System.Drawing.Size(97, 21)
+        Me.btn_Export.TabIndex = 18
+        Me.btn_Export.Text = "Export to CSV"
+        Me.btn_Export.UseVisualStyleBackColor = True
+        '
+        'btn_Copy
+        '
+        Me.btn_Copy.Location = New System.Drawing.Point(118, 64)
+        Me.btn_Copy.Name = "btn_Copy"
+        Me.btn_Copy.Size = New System.Drawing.Size(97, 21)
+        Me.btn_Copy.TabIndex = 19
+        Me.btn_Copy.Text = "Copy"
+        Me.btn_Copy.UseVisualStyleBackColor = True
+        '
+        'btn_Clear
+        '
+        Me.btn_Clear.Location = New System.Drawing.Point(221, 64)
+        Me.btn_Clear.Name = "btn_Clear"
+        Me.btn_Clear.Size = New System.Drawing.Size(97, 21)
+        Me.btn_Clear.TabIndex = 20
+        Me.btn_Clear.Text = "Clear Results"
+        Me.btn_Clear.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(847, 589)
         Me.Controls.Add(Me.SplitContainer1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(863, 627)
+        Me.MinimumSize = New System.Drawing.Size(863, 627)
         Me.Name = "frmMain"
         Me.Text = "Single Field CCS Calculator"
         Me.SplitContainer1.Panel1.ResumeLayout(False)
@@ -315,8 +348,10 @@ Partial Class frmMain
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Adduct As DataGridViewComboBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents btn_Copy As Button
+    Friend WithEvents btn_Export As Button
+    Friend WithEvents btn_Clear As Button
 End Class

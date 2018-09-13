@@ -77,6 +77,11 @@ Public Class frmMain
 
     Private Sub comboBox_DriftGas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboBox_DriftGas.SelectedIndexChanged
         gasType = comboBox_DriftGas.Text
+        For rowIndex As Integer = 0 To dgv_Results.Rows.Count - 1
+            If readyForCalc(rowIndex) Then
+                updateDGVWithResults(rowIndex)
+            End If
+        Next
     End Sub
 
     Function CalculateCCS(tD As Double, MassToCharge As Double, ChargeState As Integer, DriftGas As String, TFix As Double, Beta As Double)
@@ -129,26 +134,10 @@ Public Class frmMain
     End Function
 
     Private Sub dgv_Results_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgv_Results.CellValueChanged
-        If e.RowIndex > -1 And e.ColumnIndex < 4 Then
+        If e.RowIndex > -1 And e.ColumnIndex < 3 Then
             Try
-                Dim readyToCalc As Boolean = False
-                For i As Integer = 0 To 3 Step 1
-                    If String.IsNullOrEmpty(Convert.ToString(dgv_Results.Rows(e.RowIndex).Cells(i).Value)) Then
-                        readyToCalc = False
-                        Exit Sub
-                    Else
-                        readyToCalc = True
-                    End If
-                Next
-                If readyToCalc = True Then
-                    Debug.Print("Ready to calculate CCS")
-                    Dim DriftTime As Double = dgv_Results.Rows(e.RowIndex).Cells(0).Value
-                    Dim MassToCharge As Double = dgv_Results.Rows(e.RowIndex).Cells(1).Value
-                    Dim ChargeState As Integer = dgv_Results.Rows(e.RowIndex).Cells(2).Value
-                    Dim CCSResults As CCS_Calculation
-                    CCSResults = CalculateCCS(DriftTime, MassToCharge, ChargeState, gasType, tFix, beta)
-                    dgv_Results.Rows(e.RowIndex).Cells(3).Value = Format(CCSResults.IonicMass, "0.0000")
-                    dgv_Results.Rows(e.RowIndex).Cells(4).Value = Format(CCSResults.CCS, "0.0")
+                If readyForCalc(e.RowIndex) Then
+                    updateDGVWithResults(e.RowIndex)
                 End If
             Catch ex As Exception
                 MessageBox.Show(Me, "Calculation failed", "Calculation failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -162,5 +151,32 @@ Public Class frmMain
         If txtBox_CalFilePath.Text = "" Then
             MessageBox.Show(Me, "Please select a calibration file first", "Calibration File Required", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
+    End Sub
+
+    Private Function readyForCalc(rowIndex As Integer) As Boolean
+        Dim readyToCalc As Boolean = False
+        For i As Integer = 0 To 2 Step 1
+            If String.IsNullOrEmpty(Convert.ToString(dgv_Results.Rows(rowIndex).Cells(i).Value)) Then
+                readyToCalc = False
+                Return False
+            Else
+                readyToCalc = True
+            End If
+        Next
+        If readyToCalc = True Then Return True
+    End Function
+
+    Private Sub updateDGVWithResults(rowIndex As Integer)
+        Dim DriftTime As Double = dgv_Results.Rows(rowIndex).Cells(0).Value
+        Dim MassToCharge As Double = dgv_Results.Rows(rowIndex).Cells(1).Value
+        Dim ChargeState As Integer = dgv_Results.Rows(rowIndex).Cells(2).Value
+        Dim CCSResults As CCS_Calculation
+        CCSResults = CalculateCCS(DriftTime, MassToCharge, ChargeState, gasType, tFix, beta)
+        dgv_Results.Rows(rowIndex).Cells(3).Value = Format(CCSResults.IonicMass, "0.0000")
+        dgv_Results.Rows(rowIndex).Cells(4).Value = Format(CCSResults.CCS, "0.00")
+    End Sub
+
+    Private Sub btn_Clear_Click(sender As Object, e As EventArgs) Handles btn_Clear.Click
+        dgv_Results.Rows.Clear()
     End Sub
 End Class
