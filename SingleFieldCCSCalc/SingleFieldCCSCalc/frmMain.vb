@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Reflection
 Imports System.Xml
 
 Public Class frmMain
@@ -30,6 +31,10 @@ Public Class frmMain
             txtBox_CalFilePath.Text = "D:\Data\Single field_Sulfa_AIF.d\AcqData\OverrideImsCal.xml"
             ReadIMSCal(txtBox_CalFilePath.Text)
         End If
+
+        Dim versionNumber As Version = Assembly.GetExecutingAssembly().GetName.Version
+
+        Me.Text = "Single Field CCS Calculator - " & versionNumber.ToString
 
     End Sub
 
