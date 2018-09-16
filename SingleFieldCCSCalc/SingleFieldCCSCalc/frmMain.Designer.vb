@@ -22,7 +22,7 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
@@ -46,8 +46,8 @@ Partial Class frmMain
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btn_Export = New System.Windows.Forms.Button()
-        Me.btn_Copy = New System.Windows.Forms.Button()
         Me.btn_Clear = New System.Windows.Forms.Button()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -95,7 +95,6 @@ Partial Class frmMain
         '
         Me.SplitContainer2.Panel1.BackColor = System.Drawing.SystemColors.Control
         Me.SplitContainer2.Panel1.Controls.Add(Me.btn_Clear)
-        Me.SplitContainer2.Panel1.Controls.Add(Me.btn_Copy)
         Me.SplitContainer2.Panel1.Controls.Add(Me.btn_Export)
         Me.SplitContainer2.Panel1.Controls.Add(Me.comboBox_DriftGas)
         Me.SplitContainer2.Panel1.Controls.Add(Me.Label3)
@@ -197,14 +196,14 @@ Partial Class frmMain
         'dgv_Results
         '
         Me.dgv_Results.BackgroundColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv_Results.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv_Results.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgv_Results.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv_Results.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
         Me.dgv_Results.Dock = System.Windows.Forms.DockStyle.Fill
@@ -285,18 +284,9 @@ Partial Class frmMain
         Me.btn_Export.Text = "Export to CSV"
         Me.btn_Export.UseVisualStyleBackColor = True
         '
-        'btn_Copy
-        '
-        Me.btn_Copy.Location = New System.Drawing.Point(118, 64)
-        Me.btn_Copy.Name = "btn_Copy"
-        Me.btn_Copy.Size = New System.Drawing.Size(97, 21)
-        Me.btn_Copy.TabIndex = 19
-        Me.btn_Copy.Text = "Copy"
-        Me.btn_Copy.UseVisualStyleBackColor = True
-        '
         'btn_Clear
         '
-        Me.btn_Clear.Location = New System.Drawing.Point(221, 64)
+        Me.btn_Clear.Location = New System.Drawing.Point(118, 64)
         Me.btn_Clear.Name = "btn_Clear"
         Me.btn_Clear.Size = New System.Drawing.Size(97, 21)
         Me.btn_Clear.TabIndex = 20
@@ -351,7 +341,7 @@ Partial Class frmMain
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
-    Friend WithEvents btn_Copy As Button
     Friend WithEvents btn_Export As Button
     Friend WithEvents btn_Clear As Button
+    Friend WithEvents SaveFileDialog1 As SaveFileDialog
 End Class

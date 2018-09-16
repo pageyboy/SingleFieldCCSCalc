@@ -51,6 +51,14 @@ Public Class frmMain
 
     Private Sub btn_ChooseCalFile_Click(sender As Object, e As EventArgs) Handles btn_ChooseCalFile.Click
         Dim FolderBrowserDialog1 As New FolderBrowserDialog()
+        Dim currentFile As String = txtBox_CalFilePath.Text
+
+        If currentFile <> "" Then
+            Dim index As Integer = currentFile.IndexOf("AcqData\OverrideImsCal.xml")
+            Dim selectedPath As String = currentFile.Substring(0, index)
+            FolderBrowserDialog1.RootFolder = Environment.SpecialFolder.Desktop
+            FolderBrowserDialog1.SelectedPath = selectedPath
+        End If
 
         If FolderBrowserDialog1.ShowDialog() = DialogResult.OK Then
             Dim IMSCalFilePath As String = FolderBrowserDialog1.SelectedPath & "\AcqData\OverrideImsCal.xml"
@@ -64,10 +72,10 @@ Public Class frmMain
             tFix = IMSCalFile.Descendants("TFix").Value
             beta = IMSCalFile.Descendants("Beta").Value
             gasType = IMSCalFile.Descendants("DriftGas").Value
-            lbl_TFix.Text = tFix
-            lbl_Beta.Text = beta
+            lbl_TFix.Text = Format(tFix, "0.000000")
+            lbl_Beta.Text = Format(beta, "0.000000")
             txtBox_CalFilePath.Text = IMSCalPath
-            comboBox_DriftGas.SelectedText = gasType
+            comboBox_DriftGas.SelectedItem = gasType
             Debug.Print("TFix: " & tFix & " Beta: " & beta & " Drift Gas Type: " & gasType)
             dgv_Results.ReadOnly = False
         Else
@@ -178,5 +186,16 @@ Public Class frmMain
 
     Private Sub btn_Clear_Click(sender As Object, e As EventArgs) Handles btn_Clear.Click
         dgv_Results.Rows.Clear()
+    End Sub
+
+    Private Sub btn_Export_Click(sender As Object, e As EventArgs) Handles btn_Export.Click
+        Dim dgvExport As DataGridView = Me.dgv_Results
+        Dim fileName As String = ""
+        SaveFileDialog1.Filter = "CSV|*.csv"
+        If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+            If SaveFileDialog1.CheckPathExists = True Then
+                MessageBox.Show(Me, "This file already exists. Would you like to overwrite it with this export?", "File Already Exists!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+            End If
+        End If
     End Sub
 End Class
