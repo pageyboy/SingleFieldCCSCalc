@@ -28,7 +28,7 @@ Public Class frmMain
         lbl_Github.Links.Add(0, 14, "https://github.com/pageyboy/SingleFieldCCSCalc")
 
         If DEBUG_MODE = True Then
-            txtBox_CalFilePath.Text = "D:\Data\Single field_Sulfa_AIF.d\AcqData\OverrideImsCal.xml"
+            txtBox_CalFilePath.Text = "D:\Data\IMQTOF Training 17 Sep 2018\Single field_Sulfa_AIF.d\AcqData\OverrideImsCal.xml"
             ReadIMSCal(txtBox_CalFilePath.Text)
         End If
 
@@ -199,7 +199,39 @@ Public Class frmMain
         SaveFileDialog1.Filter = "CSV|*.csv"
         If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
             If SaveFileDialog1.CheckPathExists = True Then
-                MessageBox.Show(Me, "This file already exists. Would you like to overwrite it with this export?", "File Already Exists!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                File.Delete(SaveFileDialog1.FileName)
+                fileName = SaveFileDialog1.FileName
+
+                Dim versionNumber As Version = Assembly.GetExecutingAssembly().GetName.Version
+                Dim objWriter As New System.IO.StreamWriter(fileName, False)
+
+                Dim fileContents As String = "Single Field Collisional Cross Section" & vbCrLf
+                fileContents &= "Date Exported: " & Format(Now(), "dd mmm yyyy hh:MM:ss") & vbCrLf
+                fileContents &= "Version: " & versionNumber.ToString() & vbCrLf
+                fileContents &= "IMS Calibration File: " & txtBox_CalFilePath.Text & vbCrLf
+                fileContents &= "TFix: " & lbl_TFix.Text & vbCrLf
+                fileContents &= "Beta: " & lbl_Beta.Text & vbCrLf
+                fileContents &= fileContents & vbCrLf
+                fileContents &= "tD (Drift Time),m/z,z,Ionic Mass,CCS (A^2)" & vbCrLf
+
+                If dgv_Results.Rows.Count > 0 Then
+                    For dgvRow = 0 To dgv_Results.Rows.Count - 1
+                        For dgvColumn = 0 To 4
+                            If Not IsNothing(dgv_Results(dgvColumn, dgvRow).Value) Then
+                                fileContents &= dgv_Results(dgvColumn, dgvRow).Value.ToString()
+                                If dgvColumn < 4 Then
+                                    fileContents &= ","
+                                Else
+                                    fileContents &= vbCrLf
+                                End If
+                            End If
+                        Next
+                    Next
+
+                    objWriter.WriteLine(fileContents)
+                    objWriter.Close()
+                End If
+
             End If
         End If
     End Sub
