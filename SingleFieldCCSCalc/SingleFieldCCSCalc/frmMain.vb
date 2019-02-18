@@ -39,10 +39,6 @@ Public Class frmMain
             ReadIMSCal(txtBox_CalFilePath.Text)
         End If
 
-        Dim versionNumber As Version = Assembly.GetExecutingAssembly().GetName.Version
-
-        Me.Text = "Single Field CCS Calculator - " & versionNumber.ToString
-
     End Sub
 
     ' Subs to handle clicking of links
@@ -213,13 +209,16 @@ Public Class frmMain
                 Dim objWriter As New System.IO.StreamWriter(fileName, False)
 
                 Dim fileContents As String = "Single Field Collisional Cross Section" & vbCrLf
-                fileContents &= "Date Exported: " & Format(Now(), "dd mmm yyyy hh:MM:ss") & vbCrLf
+                fileContents &= "Date Exported: " & Format(Now(), "dd MMM yyyy hh:mm:ss") & vbCrLf
                 fileContents &= "Version: " & versionNumber.ToString() & vbCrLf
                 fileContents &= "IMS Calibration File: " & txtBox_CalFilePath.Text & vbCrLf
                 fileContents &= "TFix: " & lbl_TFix.Text & vbCrLf
                 fileContents &= "Beta: " & lbl_Beta.Text & vbCrLf
-                fileContents &= fileContents & vbCrLf
+                fileContents &= vbCrLf
                 fileContents &= "tD (Drift Time),m/z,z,Ionic Mass,CCS (A^2)" & vbCrLf
+
+                Debug.Print(fileContents)
+
 
                 If dgv_Results.Rows.Count > 0 Then
                     For dgvRow = 0 To dgv_Results.Rows.Count - 1
