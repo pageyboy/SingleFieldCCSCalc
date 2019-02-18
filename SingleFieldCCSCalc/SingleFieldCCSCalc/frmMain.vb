@@ -15,6 +15,13 @@ Public Class frmMain
     End Structure
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+        Dim assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location
+        Dim fileVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(assemblyLocation).FileVersion
+        Debug.Print(fileVersion)
+
+        Me.Text = "Single Field CCS Calculator - v" & fileVersion
+
         ' Ensure that the correct Attribution is made as per the licencing
         lbl_Atribution.Text = "Icons made by Freepik from Flaticon is licensed by Creative Commons BY 3.0"
         lbl_Atribution.Links.Add(14, 7, "http://www.freepik.com")
@@ -22,10 +29,10 @@ Public Class frmMain
         lbl_Atribution.Links.Add(51, 23, "http://creativecommons.org/licenses/by/3.0/")
 
         lbl_Developer.Text = "Made in UK by Chris Page"
-        lbl_Developer.Links.Add(14, 10, "mailto: chris.page@agilent.com")
+        lbl_Developer.Links.Add(14, 10, "mailto:chris.page@agilent.com?subject=Single%20Field%20CCS%20Calculator%20-%20v" & fileVersion)
 
-        lbl_Github.Text = "Find on Github"
-        lbl_Github.Links.Add(0, 14, "https://github.com/pageyboy/SingleFieldCCSCalc")
+        lbl_Github.Text = "Visit Github for the latest updates and information"
+        lbl_Github.Links.Add(6, 6, "https://github.com/pageyboy/SingleFieldCCSCalc")
 
         If DEBUG_MODE = True Then
             txtBox_CalFilePath.Text = "D:\Data\IMQTOF Training 17 Sep 2018\Single field_Sulfa_AIF.d\AcqData\OverrideImsCal.xml"

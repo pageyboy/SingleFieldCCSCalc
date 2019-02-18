@@ -22,10 +22,12 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
+        Me.btn_Clear = New System.Windows.Forms.Button()
+        Me.btn_Export = New System.Windows.Forms.Button()
         Me.comboBox_DriftGas = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lbl_Beta = New System.Windows.Forms.Label()
@@ -36,17 +38,15 @@ Partial Class frmMain
         Me.txtBox_CalFilePath = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dgv_Results = New System.Windows.Forms.DataGridView()
-        Me.lbl_Github = New System.Windows.Forms.LinkLabel()
-        Me.lbl_Developer = New System.Windows.Forms.LinkLabel()
-        Me.lbl_Atribution = New System.Windows.Forms.LinkLabel()
-        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btn_Export = New System.Windows.Forms.Button()
-        Me.btn_Clear = New System.Windows.Forms.Button()
+        Me.lbl_Github = New System.Windows.Forms.LinkLabel()
+        Me.lbl_Developer = New System.Windows.Forms.LinkLabel()
+        Me.lbl_Atribution = New System.Windows.Forms.LinkLabel()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -112,6 +112,24 @@ Partial Class frmMain
         Me.SplitContainer2.Size = New System.Drawing.Size(847, 529)
         Me.SplitContainer2.SplitterDistance = 97
         Me.SplitContainer2.TabIndex = 0
+        '
+        'btn_Clear
+        '
+        Me.btn_Clear.Location = New System.Drawing.Point(118, 64)
+        Me.btn_Clear.Name = "btn_Clear"
+        Me.btn_Clear.Size = New System.Drawing.Size(97, 21)
+        Me.btn_Clear.TabIndex = 20
+        Me.btn_Clear.Text = "Clear Results"
+        Me.btn_Clear.UseVisualStyleBackColor = True
+        '
+        'btn_Export
+        '
+        Me.btn_Export.Location = New System.Drawing.Point(15, 64)
+        Me.btn_Export.Name = "btn_Export"
+        Me.btn_Export.Size = New System.Drawing.Size(97, 21)
+        Me.btn_Export.TabIndex = 18
+        Me.btn_Export.Text = "Export to CSV"
+        Me.btn_Export.UseVisualStyleBackColor = True
         '
         'comboBox_DriftGas
         '
@@ -196,14 +214,14 @@ Partial Class frmMain
         'dgv_Results
         '
         Me.dgv_Results.BackgroundColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv_Results.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv_Results.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgv_Results.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv_Results.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
         Me.dgv_Results.Dock = System.Windows.Forms.DockStyle.Fill
@@ -212,38 +230,6 @@ Partial Class frmMain
         Me.dgv_Results.ReadOnly = True
         Me.dgv_Results.Size = New System.Drawing.Size(847, 428)
         Me.dgv_Results.TabIndex = 1
-        '
-        'lbl_Github
-        '
-        Me.lbl_Github.Location = New System.Drawing.Point(430, 32)
-        Me.lbl_Github.Name = "lbl_Github"
-        Me.lbl_Github.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lbl_Github.Size = New System.Drawing.Size(405, 13)
-        Me.lbl_Github.TabIndex = 36
-        Me.lbl_Github.TabStop = True
-        Me.lbl_Github.Text = "Fork Github Placeholder"
-        Me.lbl_Github.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'lbl_Developer
-        '
-        Me.lbl_Developer.Location = New System.Drawing.Point(430, 10)
-        Me.lbl_Developer.Name = "lbl_Developer"
-        Me.lbl_Developer.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lbl_Developer.Size = New System.Drawing.Size(405, 13)
-        Me.lbl_Developer.TabIndex = 35
-        Me.lbl_Developer.TabStop = True
-        Me.lbl_Developer.Text = "Developer Placeholder"
-        Me.lbl_Developer.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'lbl_Atribution
-        '
-        Me.lbl_Atribution.AutoSize = True
-        Me.lbl_Atribution.Location = New System.Drawing.Point(10, 22)
-        Me.lbl_Atribution.Name = "lbl_Atribution"
-        Me.lbl_Atribution.Size = New System.Drawing.Size(113, 13)
-        Me.lbl_Atribution.TabIndex = 34
-        Me.lbl_Atribution.TabStop = True
-        Me.lbl_Atribution.Text = "Attribution Placeholder"
         '
         'Column1
         '
@@ -275,23 +261,37 @@ Partial Class frmMain
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
         '
-        'btn_Export
+        'lbl_Github
         '
-        Me.btn_Export.Location = New System.Drawing.Point(15, 64)
-        Me.btn_Export.Name = "btn_Export"
-        Me.btn_Export.Size = New System.Drawing.Size(97, 21)
-        Me.btn_Export.TabIndex = 18
-        Me.btn_Export.Text = "Export to CSV"
-        Me.btn_Export.UseVisualStyleBackColor = True
+        Me.lbl_Github.Location = New System.Drawing.Point(430, 32)
+        Me.lbl_Github.Name = "lbl_Github"
+        Me.lbl_Github.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lbl_Github.Size = New System.Drawing.Size(405, 13)
+        Me.lbl_Github.TabIndex = 36
+        Me.lbl_Github.TabStop = True
+        Me.lbl_Github.Text = "Fork Github Placeholder"
+        Me.lbl_Github.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'btn_Clear
+        'lbl_Developer
         '
-        Me.btn_Clear.Location = New System.Drawing.Point(118, 64)
-        Me.btn_Clear.Name = "btn_Clear"
-        Me.btn_Clear.Size = New System.Drawing.Size(97, 21)
-        Me.btn_Clear.TabIndex = 20
-        Me.btn_Clear.Text = "Clear Results"
-        Me.btn_Clear.UseVisualStyleBackColor = True
+        Me.lbl_Developer.Location = New System.Drawing.Point(430, 10)
+        Me.lbl_Developer.Name = "lbl_Developer"
+        Me.lbl_Developer.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lbl_Developer.Size = New System.Drawing.Size(405, 13)
+        Me.lbl_Developer.TabIndex = 35
+        Me.lbl_Developer.TabStop = True
+        Me.lbl_Developer.Text = "Developer Placeholder"
+        Me.lbl_Developer.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lbl_Atribution
+        '
+        Me.lbl_Atribution.AutoSize = True
+        Me.lbl_Atribution.Location = New System.Drawing.Point(12, 10)
+        Me.lbl_Atribution.Name = "lbl_Atribution"
+        Me.lbl_Atribution.Size = New System.Drawing.Size(113, 13)
+        Me.lbl_Atribution.TabIndex = 34
+        Me.lbl_Atribution.TabStop = True
+        Me.lbl_Atribution.Text = "Attribution Placeholder"
         '
         'frmMain
         '
