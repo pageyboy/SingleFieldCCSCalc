@@ -1,0 +1,40 @@
+<MccMethod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ModuleType="VTC" xsdName="MccMethod.xsd" schemaVersion="1.0.0" schemaSI="1" ModuleOptions="">
+  <ConfigurationXml>&lt;MccConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsdName="MccConfig.xsd" schemaVersion="1.0.0" schemaSI="1"&gt;&lt;DisplayName&gt;VTC&lt;/DisplayName&gt;&lt;SerialNumber /&gt;&lt;ModuleType&gt;VTC&lt;/ModuleType&gt;&lt;ModuleDisplayType&gt;VTC&lt;/ModuleDisplayType&gt;&lt;ConnectionInfo&gt;&lt;ConnectionType&gt;ConnectionType_IPAddress&lt;/ConnectionType&gt;&lt;IPAddress&gt;192.168.254.11&lt;/IPAddress&gt;&lt;/ConnectionInfo&gt;&lt;FirmwareRevision /&gt;&lt;Topology&gt;VC&lt;/Topology&gt;&lt;SubModulesTable&gt;&lt;SubModulesTableType&gt;&lt;SubModules&gt;&lt;SerialNumber&gt;DEBA402973&lt;/SerialNumber&gt;&lt;ModuleDisplayType&gt;G7116B&lt;/ModuleDisplayType&gt;&lt;ModuleType&gt;G7116B&lt;/ModuleType&gt;&lt;FirmwareRevision&gt;D.07.23 [0009]&lt;/FirmwareRevision&gt;&lt;FirmwareRevisionOfHostedModule&gt;C.07.20 [0002]&lt;/FirmwareRevisionOfHostedModule&gt;&lt;DeviceName&gt;MCT1&lt;/DeviceName&gt;&lt;Valves&gt;&lt;ValveType&gt;&lt;ValveHeadId&gt;5067-4241&lt;/ValveHeadId&gt;&lt;RealHeadId&gt;5067-4241&lt;/RealHeadId&gt;&lt;RealMaxPressure&gt;1300&lt;/RealMaxPressure&gt;&lt;/ValveType&gt;&lt;TopologyValveIndex&gt;0&lt;/TopologyValveIndex&gt;&lt;ParentPosition&gt;0&lt;/ParentPosition&gt;&lt;/Valves&gt;&lt;IsTagReaderLeftInstalled&gt;false&lt;/IsTagReaderLeftInstalled&gt;&lt;IsTagReaderRightInstalled&gt;false&lt;/IsTagReaderRightInstalled&gt;&lt;/SubModules&gt;&lt;/SubModulesTableType&gt;&lt;/SubModulesTable&gt;&lt;FlowPathsTable&gt;&lt;FlowPathsTableType&gt;&lt;FlowPaths&gt;&lt;Name&gt;1&lt;/Name&gt;&lt;Color&gt;0&lt;/Color&gt;&lt;ValvePositions&gt;1&lt;/ValvePositions&gt;&lt;Usage&gt;Column&lt;/Usage&gt;&lt;ColumnLocation&gt;&lt;SubModuleIndex&gt;0&lt;/SubModuleIndex&gt;&lt;ColumnLocationId&gt;L1&lt;/ColumnLocationId&gt;&lt;/ColumnLocation&gt;&lt;/FlowPaths&gt;&lt;FlowPaths&gt;&lt;Name&gt;2&lt;/Name&gt;&lt;Color&gt;0&lt;/Color&gt;&lt;ValvePositions&gt;2&lt;/ValvePositions&gt;&lt;Usage&gt;Waste&lt;/Usage&gt;&lt;/FlowPaths&gt;&lt;/FlowPathsTableType&gt;&lt;/FlowPathsTable&gt;&lt;/MccConfig&gt;</ConfigurationXml>
+  <Timetable />
+  <StopTime>
+    <StopTimeMode>StopTime_NoLimit</StopTimeMode>
+  </StopTime>
+  <PostTime>
+    <PostTimeMode>PostTime_Off</PostTimeMode>
+  </PostTime>
+  <FlowPathIndex>0</FlowPathIndex>
+  <SubModuleSettingsTable>
+    <SubModuleSettingsTableType>
+      <SubModuleSettings xsi:type="TwoHeatZoneSubModuleSettingsType">
+        <LeftTemperature>
+          <TemperatureControlMode>TemperatureSet</TemperatureControlMode>
+          <Temperature>30</Temperature>
+          <NotReadyLimit>
+            <NotReadyLimitOn>true</NotReadyLimitOn>
+            <NotReadyLimitValue>0.8</NotReadyLimitValue>
+            <EquilibrationTime>0</EquilibrationTime>
+          </NotReadyLimit>
+        </LeftTemperature>
+        <RightTemperature>
+          <TemperatureControlMode>TemperatureSet</TemperatureControlMode>
+          <Temperature>30</Temperature>
+          <NotReadyLimit>
+            <NotReadyLimitOn>true</NotReadyLimitOn>
+            <NotReadyLimitValue>0.8</NotReadyLimitValue>
+            <EquilibrationTime>0</EquilibrationTime>
+          </NotReadyLimit>
+        </RightTemperature>
+        <ReadyWhenFrontDoorOpen>true</ReadyWhenFrontDoorOpen>
+      </SubModuleSettings>
+    </SubModuleSettingsTableType>
+  </SubModuleSettingsTable>
+  <EnforceColumnInformation>
+    <ColumnType />
+    <EnforceColumnTypeOnInstrument>false</EnforceColumnTypeOnInstrument>
+  </EnforceColumnInformation>
+</MccMethod>

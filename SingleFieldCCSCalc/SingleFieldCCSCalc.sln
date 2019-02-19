@@ -26,6 +26,7 @@ Global
 		UpdateAssemblyVersion.Debug|Any CPU = True
 		UpdateAssemblyFileVersion.Debug|Any CPU = True
 		UpdateAssemblyInfoVersion.Debug|Any CPU = True
+		ShouldCreateLogs.Debug|Any CPU = True
 		AssemblyVersionSettings.Debug|Any CPU = None.None.Increment.HalfOfSecondsSinceMidnight
 		AssemblyFileVersionSettings.Debug|Any CPU = None.None.Increment.HalfOfSecondsSinceMidnight
 		AssemblyInfoVersionSettings.Debug|Any CPU = None.None.Increment.HalfOfSecondsSinceMidnight
@@ -35,6 +36,7 @@ Global
 		UpdateAssemblyVersion.Release|Any CPU = True
 		UpdateAssemblyFileVersion.Release|Any CPU = True
 		UpdateAssemblyInfoVersion.Release|Any CPU = True
+		ShouldCreateLogs.Release|Any CPU = True
 		AssemblyVersionSettings.Release|Any CPU = None.Increment.Increment.HalfOfSecondsSinceMidnight
 		AssemblyFileVersionSettings.Release|Any CPU = None.Increment.Increment.HalfOfSecondsSinceMidnight
 		AssemblyInfoVersionSettings.Release|Any CPU = None.Increment.Increment.HalfOfSecondsSinceMidnight

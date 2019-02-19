@@ -7,7 +7,7 @@ Public Class frmMain
     Dim tFix As Double
     Dim beta As Double
     Dim gasType As String
-    Dim DEBUG_MODE As Boolean = True
+    Dim DEBUG_MODE As Boolean = False
 
     Public Structure CCS_Calculation
         Dim IonicMass As Single

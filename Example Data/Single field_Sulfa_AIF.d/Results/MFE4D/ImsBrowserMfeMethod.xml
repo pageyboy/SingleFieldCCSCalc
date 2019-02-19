@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Method>
+  <Version>1.0</Version>
+  <Parameter key="">
+    <Parameter key="FFParams">
+      <Parameter key="AssignSingletZ1">
+        <Value>False</Value>
+      </Parameter>
+      <Parameter key="ChromatographicData">
+        <Value>True</Value>
+      </Parameter>
+      <Parameter key="ExtractionAcqTimeRange">
+        <Value>
+          <Min>0</Min>
+          <Max>0</Max>
+        </Value>
+      </Parameter>
+      <Parameter key="ExtractionDataThresholdMultiplier">
+        <Value>0.3</Value>
+      </Parameter>
+      <Parameter key="ExtractionDriftTimeRange">
+        <Value>
+          <Min>0</Min>
+          <Max>0</Max>
+        </Value>
+      </Parameter>
+      <Parameter key="ExtractionMzRange">
+        <Value>
+          <Min>0</Min>
+          <Max>0</Max>
+        </Value>
+      </Parameter>
+      <Parameter key="ExtractionPeakThreshold">
+        <Value>50</Value>
+      </Parameter>
+      <Parameter key="IonHeightThreshold">
+        <Value>100</Value>
+      </Parameter>
+      <Parameter key="IsotopeModel">
+        <Value>CommonOrganic</Value>
+      </Parameter>
+      <Parameter key="LimitExtractionAcqTimeRange">
+        <Value>False</Value>
+      </Parameter>
+      <Parameter key="LimitExtractionDriftTimeRange">
+        <Value>False</Value>
+      </Parameter>
+      <Parameter key="LimitExtractionMzRange">
+        <Value>False</Value>
+      </Parameter>
+      <Parameter key="LimitMaxChargeState">
+        <Value>True</Value>
+      </Parameter>
+      <Parameter key="LimitResultAcqTimeRange">
+        <Value>True</Value>
+      </Parameter>
+      <Parameter key="LimitResultDriftTimeRange">
+        <Value>False</Value>
+      </Parameter>
+      <Parameter key="LimitResultMzRange">
+        <Value>False</Value>
+      </Parameter>
+      <Parameter key="MaxChargeState">
+        <Value>1</Value>
+      </Parameter>
+      <Parameter key="ResultAcqTimeRange">
+        <Value>
+          <Min>0.1</Min>
+          <Max>0.24</Max>
+        </Value>
+      </Parameter>
+      <Parameter key="ResultDriftTimeRange">
+        <Value>
+          <Min>0</Min>
+          <Max>3.40282346638529E+38</Max>
+        </Value>
+      </Parameter>
+      <Parameter key="ResultMzRange">
+        <Value>
+          <Min>0</Min>
+          <Max>50000</Max>
+        </Value>
+      </Parameter>
+    </Parameter>
+  </Parameter>
+</Method>

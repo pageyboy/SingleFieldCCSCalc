@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Devices>
+  <Version>1</Version>
+  <Device DeviceID="1">
+    <Name>QTOF</Name>
+    <DriverVersion>8.00.00</DriverVersion>
+    <FirmwareVersion>24.723</FirmwareVersion>
+    <ModelNumber>G6560B</ModelNumber>
+    <OrdinalNumber>1</OrdinalNumber>
+    <SerialNumber>SG1814C101</SerialNumber>
+    <Type>6</Type>
+    <StoredDataType>8</StoredDataType>
+    <Delay>0</Delay>
+    <Vendor>1</Vendor>
+  </Device>
+  <Device DeviceID="1011">
+    <Name>DAD</Name>
+    <ModelNumber>G7117B</ModelNumber>
+    <OrdinalNumber>1</OrdinalNumber>
+    <SerialNumber>DEBAW01806</SerialNumber>
+    <Type>14</Type>
+    <StoredDataType>3</StoredDataType>
+    <Delay>0</Delay>
+    <Vendor>1</Vendor>
+  </Device>
+  <Device DeviceID="1012">
+    <Name>MultiColumnCluster</Name>
+    <ModelNumber>VTC</ModelNumber>
+    <OrdinalNumber>1</OrdinalNumber>
+    <SerialNumber>
+    </SerialNumber>
+    <Type>83</Type>
+    <StoredDataType>2</StoredDataType>
+    <Delay>0</Delay>
+    <Vendor>1</Vendor>
+  </Device>
+  <Device DeviceID="1013">
+    <Name>HiP-ALS</Name>
+    <ModelNumber>G7167B</ModelNumber>
+    <OrdinalNumber>1</OrdinalNumber>
+    <SerialNumber>DEBAS01430</SerialNumber>
+    <Type>21</Type>
+    <StoredDataType>2</StoredDataType>
+    <Delay>0</Delay>
+    <Vendor>1</Vendor>
+  </Device>
+  <Device DeviceID="1014">
+    <Name>IsoPump</Name>
+    <ModelNumber>G1310B</ModelNumber>
+    <OrdinalNumber>1</OrdinalNumber>
+    <SerialNumber>DEAB905038</SerialNumber>
+    <Type>30</Type>
+    <StoredDataType>2</StoredDataType>
+    <Delay>0</Delay>
+    <Vendor>1</Vendor>
+  </Device>
+  <Device DeviceID="1015">
+    <Name>BinPump</Name>
+    <ModelNumber>G7120A</ModelNumber>
+    <OrdinalNumber>1</OrdinalNumber>
+    <SerialNumber>DEBA202116</SerialNumber>
+    <Type>31</Type>
+    <StoredDataType>2</StoredDataType>
+    <Delay>0</Delay>
+    <Vendor>1</Vendor>
+  </Device>
+</Devices>
